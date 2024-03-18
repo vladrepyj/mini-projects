@@ -28,8 +28,7 @@ var digitForLetter = []rune{
 	0, 1, 2, 3, 0, 1, 2, 0, 0, 2, 2, 4, 5,
 	// A  B  C  D  E  F  G  H  I  J  K  L  M
 	5, 0, 1, 2, 6, 2, 3, 0, 1, 0, 2, 0, 2}
-
-// N  O  P  Q  R  S  T  U  V  W  X  Y  Z
+	// N  O  P  Q  R  S  T  U  V  W  X  Y  Z
 
 var testCases map[string]string
 
@@ -60,7 +59,7 @@ func populateTestCases(filename string) (map[string]string, bool) {
 }
 
 func homePage(writer http.ResponseWriter, request *http.Request) {
-	err := request.ParseForm() // Must be called before writing response
+	err := request.ParseForm() 
 	fmt.Fprint(writer, pageTop, form)
 	if err != nil {
 		fmt.Fprintf(writer, error, err)
@@ -84,10 +83,6 @@ func processRequest(request *http.Request) (names []string) {
 	return names
 }
 
-// "c - 'A'" produces a 0-based index, so 'A' -> 0, 'B' -> 1, etc.
-// "'0' + digitForLetter[index]" converts a one digit integer into the
-// equivalent Unicode character, i.e., 0 -> "0", 1 -> "1", etc.
-func soundex(name string) string {
 	name = strings.ToUpper(name)
 	chars := []rune(name)
 	var codes []rune
