@@ -38,7 +38,7 @@ func main() {
 }
 
 func homePage(writer http.ResponseWriter, request *http.Request) {
-	err := request.ParseForm() // Must be called before writing response
+	err := request.ParseForm() 
 	fmt.Fprint(writer, pageTop, form)
 	if err != nil {
 		fmt.Fprintf(writer, error, err)
@@ -66,16 +66,16 @@ func processRequest(request *http.Request) ([3]float64, string, bool) {
 				} else {
 					floats[index] = x
 				}
-			} else { // as a courtesy to users treat blanks as 0
+			} else { 
 				request.Form[key][0] = "0"
 				floats[index] = 0
 			}
 			count++
 		}
 	}
-	if count != 3 { // the first time the form is empty;
-		return floats, "", false // this isn't an error but there's
-	} // nothing to calculate
+	if count != 3 { 
+		return floats, "", false 
+	} 
 	if EqualFloat(floats[0], 0, -1) {
 		return floats, "the x² factor may not be 0", false
 	}
