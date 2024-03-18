@@ -40,7 +40,7 @@ func main() {
 }
 
 func homePage(writer http.ResponseWriter, request *http.Request) {
-	err := request.ParseForm() // Must be called before writing response
+	err := request.ParseForm() 
 	fmt.Fprint(writer, pageTop, form)
 	if err != nil {
 		fmt.Fprintf(writer, anError, err)
@@ -68,7 +68,7 @@ func processRequest(request *http.Request) ([]float64, string, bool) {
 		}
 	}
 	if len(numbers) == 0 {
-		return numbers, "", false // no data first time form is shown
+		return numbers, "", false 
 	}
 	return numbers, "", true
 }
@@ -128,7 +128,7 @@ func mode(numbers []float64) (modes []float64) {
 		}
 	}
 	if highestFrequency == 1 || len(modes) == len(frequencies) {
-		modes = modes[:0] // Or: modes = []float64{}
+		modes = modes[:0] 
 	}
 	sort.Float64s(modes)
 	return modes
